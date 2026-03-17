@@ -6,7 +6,7 @@ interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: numb
 /* ── Consistent Hashing Ring Visualizer ── */
 function HashRing() {
   const [nodes, setNodes] = useState(['A', 'B', 'C']);
-  const [keys, setKeys] = useState(['user:1', 'user:2', 'user:3', 'user:4', 'user:5']);
+  const [keys] = useState(['user:1', 'user:2', 'user:3', 'user:4', 'user:5']);
 
   const hash = useCallback((s: string) => {
     let h = 0;

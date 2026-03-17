@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { systems } from '../data/systems';
 import { SystemHeader, Section, TheoryBox, InterviewTips, CompareTable } from './SystemLayout';
 import type { SystemPageProps } from './SystemPage';
