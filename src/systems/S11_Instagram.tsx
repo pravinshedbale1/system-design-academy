@@ -9,7 +9,7 @@ export default function S11_Instagram({ onProgress, onComplete }: SystemPageProp
   useEffect(() => { onProgress(81); const t = setTimeout(() => onComplete(81), 8000); return () => clearTimeout(t); }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="Instagram serves 2B+ monthly active users with 100M+ photos uploaded per day.">

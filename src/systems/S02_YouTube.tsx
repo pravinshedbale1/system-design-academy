@@ -24,24 +24,26 @@ function TranscodingPipeline() {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5">
         {stages.map((s, i) => (
-          <div key={s.label} className="flex-1 flex flex-col items-center gap-1">
-            <motion.div
-              className="w-full h-10 rounded-lg flex items-center justify-center text-xs font-semibold"
-              animate={{
-                backgroundColor: activeStage === i ? `${s.color}33` : '#f9fafb',
-                borderColor: activeStage === i ? s.color : '#e5e7eb',
-                scale: activeStage === i ? 1.05 : 1,
-              }}
-              style={{ border: '1.5px solid', borderColor: '#e5e7eb' }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-base">{s.icon}</span>
-            </motion.div>
-            <span className="text-[9px] text-gray-500 text-center">{s.label}</span>
+          <div key={s.label} className="contents">
+            <div className="flex-1 flex flex-col items-center gap-1">
+              <motion.div
+                className="w-full h-10 rounded-lg flex items-center justify-center text-xs font-semibold"
+                animate={{
+                  backgroundColor: activeStage === i ? `${s.color}33` : '#f9fafb',
+                  borderColor: activeStage === i ? s.color : '#e5e7eb',
+                  scale: activeStage === i ? 1.05 : 1,
+                }}
+                style={{ border: '1.5px solid', borderColor: '#e5e7eb' }}
+                transition={{ duration: 0.3 }}
+              >
+                <span className="text-base">{s.icon}</span>
+              </motion.div>
+              <span className="text-[9px] text-gray-500 text-center">{s.label}</span>
+            </div>
             {i < stages.length - 1 && (
-              <div className="absolute" style={{ marginLeft: '100%' }}>→</div>
+              <span className="text-gray-300 dark:text-gray-600 text-xs flex-shrink-0">→</span>
             )}
           </div>
         ))}
@@ -106,7 +108,7 @@ export default function S02_YouTube({ onProgress, onComplete }: SystemPageProps)
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">

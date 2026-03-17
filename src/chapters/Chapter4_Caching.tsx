@@ -142,7 +142,7 @@ export default function Chapter4({ onProgress, onComplete }: ChapterProps) {
   }));
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       {/* Header */}
       <div>
         <div className="flex items-center gap-3 mb-3">

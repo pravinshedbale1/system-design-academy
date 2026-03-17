@@ -63,7 +63,7 @@ export default function Chapter17_Proxies({ onProgress, onComplete }: ChapterPro
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 16</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🛡️ Proxies & API Gateway</h1>

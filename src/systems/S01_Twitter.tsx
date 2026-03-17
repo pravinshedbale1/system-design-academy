@@ -155,7 +155,7 @@ export default function S01_Twitter({ onProgress, onComplete }: SystemPageProps)
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       {/* Estimation */}

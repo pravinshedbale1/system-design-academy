@@ -9,7 +9,7 @@ export default function S13_Dropbox({ onProgress, onComplete }: SystemPageProps)
   useEffect(() => { onProgress(83); const t = setTimeout(() => onComplete(83), 8000); return () => clearTimeout(t); }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Core Architecture" note="Dropbox syncs 1.2B+ files per day across 700M users.">

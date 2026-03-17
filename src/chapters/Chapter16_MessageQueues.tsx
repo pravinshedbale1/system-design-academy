@@ -89,7 +89,7 @@ export default function Chapter16_MessageQueues({ onProgress, onComplete }: Chap
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 15</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">📬 Message Queues</h1>

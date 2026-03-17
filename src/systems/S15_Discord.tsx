@@ -9,7 +9,7 @@ export default function S15_Discord({ onProgress, onComplete }: SystemPageProps)
   useEffect(() => { onProgress(85); const t = setTimeout(() => onComplete(85), 8000); return () => clearTimeout(t); }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="Discord handles 150M+ MAU, 4B+ messages/day, millions of concurrent voice users.">

@@ -40,7 +40,7 @@ export default function S12_TinyURL({ onProgress, onComplete }: SystemPageProps)
   useEffect(() => { onProgress(82); const t = setTimeout(() => onComplete(82), 8000); return () => clearTimeout(t); }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="500M new URLs/month, 50B redirects/month (100:1 read/write ratio).">

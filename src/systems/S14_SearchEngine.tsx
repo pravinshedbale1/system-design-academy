@@ -9,7 +9,7 @@ export default function S14_SearchEngine({ onProgress, onComplete }: SystemPageP
   useEffect(() => { onProgress(84); const t = setTimeout(() => onComplete(84), 8000); return () => clearTimeout(t); }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Architecture Overview" note="A search engine has 3 stages: Crawl → Index → Serve.">

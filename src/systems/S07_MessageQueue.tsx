@@ -84,7 +84,7 @@ export default function S07_MessageQueue({ onProgress, onComplete }: SystemPageP
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">
