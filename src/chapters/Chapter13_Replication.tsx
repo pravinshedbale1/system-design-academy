@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 /* ── Quorum Calculator ── */
 function QuorumCalc() {
@@ -81,7 +81,7 @@ function ReplicationLagDemo() {
   );
 }
 
-export default function Chapter13_Replication({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter13_Replication({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(13); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

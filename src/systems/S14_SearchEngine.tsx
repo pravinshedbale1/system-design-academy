@@ -5,7 +5,7 @@ import type { SystemPageProps } from './SystemPage';
 
 const sys = systems.find(s => s.id === 14)!;
 
-export default function S14_SearchEngine({ onProgress, onComplete }: SystemPageProps) {
+export default function S14_SearchEngine({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(84); }, []);
 
   return (

@@ -66,7 +66,7 @@ function ChunkUploadVisual() {
   );
 }
 
-export default function S08_GoogleDrive({ onProgress, onComplete }: SystemPageProps) {
+export default function S08_GoogleDrive({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(78);  }, []);
 

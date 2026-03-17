@@ -5,7 +5,7 @@ import type { SystemPageProps } from './SystemPage';
 
 const sys = systems.find(s => s.id === 13)!;
 
-export default function S13_Dropbox({ onProgress, onComplete }: SystemPageProps) {
+export default function S13_Dropbox({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(83); }, []);
 
   return (

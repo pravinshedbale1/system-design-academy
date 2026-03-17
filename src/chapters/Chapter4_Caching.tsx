@@ -5,7 +5,6 @@ import FlowCard from '../components/UI/FlowCard';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 // ── Cache-aside SVG Diagram (per step)
@@ -122,7 +121,7 @@ const cachingPatterns = [
   },
 ];
 
-export default function Chapter4({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter4({ onProgress }: ChapterProps) {
   const [cacheStep, setCacheStep] = useState(0);
 
   useEffect(() => {

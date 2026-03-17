@@ -4,7 +4,6 @@ import MetricBar from '../components/UI/MetricBar';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 // ── Traffic Load Simulator
@@ -205,7 +204,7 @@ function StatelessDiagram() {
 }
 
 // ── Main Chapter 1
-export default function Chapter1({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter1({ onProgress }: ChapterProps) {
   useEffect(() => {
     onProgress(1);  }, []);
 

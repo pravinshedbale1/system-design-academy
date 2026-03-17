@@ -98,7 +98,7 @@ function MatchingAnimation() {
   );
 }
 
-export default function S04_Uber({ onProgress, onComplete }: SystemPageProps) {
+export default function S04_Uber({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(74);  }, []);
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 /* ── OAuth 2.0 Flow Visualizer ── */
 function OAuthFlow() {
@@ -37,7 +37,7 @@ function OAuthFlow() {
   );
 }
 
-export default function Chapter19_Security({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter19_Security({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(19); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

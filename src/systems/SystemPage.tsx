@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 export interface SystemPageProps {
   systemId: number;
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 type LazySystem = ReturnType<typeof lazy<ComponentType<SystemPageProps>>>;
@@ -42,7 +41,7 @@ function Skeleton() {
   );
 }
 
-export default function SystemPage({ systemId, onProgress, onComplete }: SystemPageProps) {
+export default function SystemPage({ systemId, onProgress }: SystemPageProps) {
   console.log('SystemPage rendered with systemId:', systemId, typeof systemId);
   const SystemComponent = systemComponents[systemId];
 
@@ -56,7 +55,7 @@ export default function SystemPage({ systemId, onProgress, onComplete }: SystemP
 
   return (
     <Suspense fallback={<Skeleton />}>
-      <SystemComponent systemId={systemId} onProgress={onProgress} onComplete={onComplete} />
+      <SystemComponent systemId={systemId} onProgress={onProgress} />
     </Suspense>
   );
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 /* ── DNS Resolution Animation ── */
 function DNSResolver() {
@@ -37,7 +37,7 @@ function DNSResolver() {
   );
 }
 
-export default function Chapter10_DNS({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter10_DNS({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(10); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

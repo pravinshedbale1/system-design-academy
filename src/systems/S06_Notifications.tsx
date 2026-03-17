@@ -77,7 +77,7 @@ function NotificationFlowDiagram() {
   );
 }
 
-export default function S06_Notifications({ onProgress, onComplete }: SystemPageProps) {
+export default function S06_Notifications({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(76);  }, []);
 

@@ -4,7 +4,6 @@ import { XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, CartesianG
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 const latencyData = [
@@ -147,7 +146,7 @@ function ThroughputCalculator() {
   );
 }
 
-export default function Chapter3({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter3({ onProgress }: ChapterProps) {
   useEffect(() => {
     onProgress(3);  }, []);
 

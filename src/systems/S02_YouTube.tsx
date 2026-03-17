@@ -100,7 +100,7 @@ function StreamingDiagram() {
   );
 }
 
-export default function S02_YouTube({ onProgress, onComplete }: SystemPageProps) {
+export default function S02_YouTube({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(72);  }, []);
 

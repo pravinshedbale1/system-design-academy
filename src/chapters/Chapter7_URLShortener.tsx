@@ -6,7 +6,6 @@ import StepperWidget from '../components/UI/StepperWidget';
 interface ChapterProps {
   systemId?: number;
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 function formatBytes(bytes: number) {
@@ -230,7 +229,7 @@ function ScalingDecisions() {
   );
 }
 
-export default function Chapter7({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter7({ onProgress }: ChapterProps) {
   const [redirectStep, setRedirectStep] = useState(0);
 
   useEffect(() => {

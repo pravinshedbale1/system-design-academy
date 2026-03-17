@@ -28,7 +28,7 @@ import Chapter19 from './chapters/Chapter20_Monitoring';
 import Chapter20 from './chapters/Chapter21_Estimation';
 import SystemPage from './systems/SystemPage';
 
-type ChapterProps = { onProgress: (id: number) => void; onComplete: (id: number) => void };
+type ChapterProps = { onProgress: (id: number) => void };
 
 const chapterComponents: Record<number, ComponentType<ChapterProps>> = {
   1: Chapter1, 2: Chapter2, 3: Chapter3, 4: Chapter4, 5: Chapter5, 6: Chapter6,
@@ -68,7 +68,6 @@ export default function App() {
                     <>
                       <ChapterComponent
                         onProgress={() => markInProgress(chapter.id)}
-                        onComplete={() => {}}
                       />
                       <ChapterFooter
                         isCompleted={progress[chapter.id] === 'completed'}
@@ -96,7 +95,6 @@ export default function App() {
                       <SystemPage
                         systemId={system.id}
                         onProgress={() => markInProgress(70 + system.id)}
-                        onComplete={() => {}}
                       />
                       <ChapterFooter
                         isCompleted={progress[70 + system.id] === 'completed'}

@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 // Decision Tree
@@ -216,7 +215,7 @@ function ShardingDiagram() {
   );
 }
 
-export default function Chapter6({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter6({ onProgress }: ChapterProps) {
   useEffect(() => {
     onProgress(6);  }, []);
 

@@ -76,7 +76,7 @@ function KafkaTopicVisual() {
   );
 }
 
-export default function S07_MessageQueue({ onProgress, onComplete }: SystemPageProps) {
+export default function S07_MessageQueue({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(77);  }, []);
 

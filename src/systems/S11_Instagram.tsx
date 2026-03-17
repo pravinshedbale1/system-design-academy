@@ -5,7 +5,7 @@ import type { SystemPageProps } from './SystemPage';
 
 const sys = systems.find(s => s.id === 11)!;
 
-export default function S11_Instagram({ onProgress, onComplete }: SystemPageProps) {
+export default function S11_Instagram({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(81); }, []);
 
   return (

@@ -74,7 +74,7 @@ function CrawlerAnimation() {
   );
 }
 
-export default function S09_WebCrawler({ onProgress, onComplete }: SystemPageProps) {
+export default function S09_WebCrawler({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(79);  }, []);
 

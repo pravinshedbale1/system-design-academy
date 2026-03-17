@@ -36,7 +36,7 @@ function Base62Demo() {
   );
 }
 
-export default function S12_TinyURL({ onProgress, onComplete }: SystemPageProps) {
+export default function S12_TinyURL({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(82); }, []);
 
   return (

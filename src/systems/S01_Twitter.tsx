@@ -147,7 +147,7 @@ function TimelineArch() {
   );
 }
 
-export default function S01_Twitter({ onProgress, onComplete }: SystemPageProps) {
+export default function S01_Twitter({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(71);  }, []);
 

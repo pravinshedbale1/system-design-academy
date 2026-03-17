@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 /* ── Protocol Comparison Animation ── */
@@ -95,7 +94,7 @@ function TLSHandshake() {
   );
 }
 
-export default function Chapter8_Networking({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter8_Networking({ onProgress }: ChapterProps) {
   useEffect(() => {
     onProgress(8);  }, []);
 

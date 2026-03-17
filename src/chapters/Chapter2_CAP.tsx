@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 const databases: Record<string, { dbs: string[]; description: string }> = {
@@ -159,7 +158,7 @@ function CAPToggle() {
   );
 }
 
-export default function Chapter2({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter2({ onProgress }: ChapterProps) {
   useEffect(() => {
     onProgress(2);  }, []);
 

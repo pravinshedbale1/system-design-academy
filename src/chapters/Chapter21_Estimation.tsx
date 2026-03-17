@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 function EstimationCalc() {
   const [dau, setDau] = useState(10);
@@ -38,7 +38,7 @@ function EstimationCalc() {
   );
 }
 
-export default function Chapter21_Estimation({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter21_Estimation({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(21); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

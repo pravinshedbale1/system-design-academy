@@ -318,7 +318,7 @@ function AlgorithmSimulator() {
   );
 }
 
-export default function S05_RateLimiter({ onProgress, onComplete }: SystemPageProps) {
+export default function S05_RateLimiter({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(75);  }, []);
 

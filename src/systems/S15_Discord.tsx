@@ -5,7 +5,7 @@ import type { SystemPageProps } from './SystemPage';
 
 const sys = systems.find(s => s.id === 15)!;
 
-export default function S15_Discord({ onProgress, onComplete }: SystemPageProps) {
+export default function S15_Discord({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(85); }, []);
 
   return (

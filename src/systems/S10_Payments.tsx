@@ -105,7 +105,7 @@ function IdempotencyDemo() {
   );
 }
 
-export default function S10_Payments({ onProgress, onComplete }: SystemPageProps) {
+export default function S10_Payments({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(80);  }, []);
 

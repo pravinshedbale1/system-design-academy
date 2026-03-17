@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 interface ChapterProps {
   onProgress: (id: number) => void;
-  onComplete: (id: number) => void;
 }
 
 const algorithms = [
@@ -203,7 +202,7 @@ function L4vsL7() {
   );
 }
 
-export default function Chapter5({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter5({ onProgress }: ChapterProps) {
   const [selectedAlgo, setSelectedAlgo] = useState(algorithms[0]);
 
   useEffect(() => {

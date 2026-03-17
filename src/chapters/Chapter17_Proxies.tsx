@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 /* ── Interactive Proxy Flow Diagram ── */
 function ProxyFlowDiagram() {
@@ -58,7 +58,7 @@ function ProxyFlowDiagram() {
   );
 }
 
-export default function Chapter17_Proxies({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(17); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

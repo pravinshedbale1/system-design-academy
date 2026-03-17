@@ -96,7 +96,7 @@ function WebSocketFlow() {
   );
 }
 
-export default function S03_WhatsApp({ onProgress, onComplete }: SystemPageProps) {
+export default function S03_WhatsApp({ onProgress }: SystemPageProps) {
   useEffect(() => {
     onProgress(73);  }, []);
 

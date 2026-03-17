@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface ChapterProps { onProgress: (id: number) => void; onComplete: (id: number) => void; }
+interface ChapterProps { onProgress: (id: number) => void; }
 
 /* ── Consistency Demo — Stale Read Visualization ── */
 function ConsistencyDemo() {
@@ -61,7 +61,7 @@ function ConsistencyDemo() {
   );
 }
 
-export default function Chapter15_ConsistencyModels({ onProgress, onComplete }: ChapterProps) {
+export default function Chapter15_ConsistencyModels({ onProgress }: ChapterProps) {
   useEffect(() => { onProgress(15); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
