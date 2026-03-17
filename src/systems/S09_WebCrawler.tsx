@@ -76,10 +76,7 @@ function CrawlerAnimation() {
 
 export default function S09_WebCrawler({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(79);
-    const t = setTimeout(() => onComplete(79), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(79);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

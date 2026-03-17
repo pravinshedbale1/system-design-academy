@@ -149,10 +149,7 @@ function TimelineArch() {
 
 export default function S01_Twitter({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(71);
-    const t = setTimeout(() => onComplete(71), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(71);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

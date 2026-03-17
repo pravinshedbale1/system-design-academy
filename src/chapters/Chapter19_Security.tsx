@@ -38,7 +38,7 @@ function OAuthFlow() {
 }
 
 export default function Chapter19_Security({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(19); const t = setTimeout(() => onComplete(19), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(19); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

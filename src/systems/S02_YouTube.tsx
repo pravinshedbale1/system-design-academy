@@ -102,10 +102,7 @@ function StreamingDiagram() {
 
 export default function S02_YouTube({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(72);
-    const t = setTimeout(() => onComplete(72), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(72);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

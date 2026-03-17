@@ -320,10 +320,7 @@ function AlgorithmSimulator() {
 
 export default function S05_RateLimiter({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(75);
-    const t = setTimeout(() => onComplete(75), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(75);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

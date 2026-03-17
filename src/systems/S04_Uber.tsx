@@ -100,10 +100,7 @@ function MatchingAnimation() {
 
 export default function S04_Uber({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(74);
-    const t = setTimeout(() => onComplete(74), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(74);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

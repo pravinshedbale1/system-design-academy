@@ -234,10 +234,7 @@ export default function Chapter7({ onProgress, onComplete }: ChapterProps) {
   const [redirectStep, setRedirectStep] = useState(0);
 
   useEffect(() => {
-    onProgress(82);
-    const t = setTimeout(() => onComplete(82), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(82);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

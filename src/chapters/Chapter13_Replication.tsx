@@ -82,7 +82,7 @@ function ReplicationLagDemo() {
 }
 
 export default function Chapter13_Replication({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(13); const t = setTimeout(() => onComplete(13), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(13); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

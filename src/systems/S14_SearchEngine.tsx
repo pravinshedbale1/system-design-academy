@@ -6,7 +6,7 @@ import type { SystemPageProps } from './SystemPage';
 const sys = systems.find(s => s.id === 14)!;
 
 export default function S14_SearchEngine({ onProgress, onComplete }: SystemPageProps) {
-  useEffect(() => { onProgress(84); const t = setTimeout(() => onComplete(84), 8000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(84); }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

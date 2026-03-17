@@ -207,10 +207,7 @@ function StatelessDiagram() {
 // ── Main Chapter 1
 export default function Chapter1({ onProgress, onComplete }: ChapterProps) {
   useEffect(() => {
-    onProgress(1);
-    const timer = setTimeout(() => onComplete(1), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    onProgress(1);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

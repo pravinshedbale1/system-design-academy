@@ -6,7 +6,7 @@ import type { SystemPageProps } from './SystemPage';
 const sys = systems.find(s => s.id === 13)!;
 
 export default function S13_Dropbox({ onProgress, onComplete }: SystemPageProps) {
-  useEffect(() => { onProgress(83); const t = setTimeout(() => onComplete(83), 8000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(83); }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

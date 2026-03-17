@@ -149,10 +149,7 @@ function ThroughputCalculator() {
 
 export default function Chapter3({ onProgress, onComplete }: ChapterProps) {
   useEffect(() => {
-    onProgress(3);
-    const t = setTimeout(() => onComplete(3), 5000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(3);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

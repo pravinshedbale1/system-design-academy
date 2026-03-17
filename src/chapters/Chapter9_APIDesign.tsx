@@ -74,7 +74,7 @@ service UserService {
 }
 
 export default function Chapter9_APIDesign({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(9); const t = setTimeout(() => onComplete(9), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(9); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

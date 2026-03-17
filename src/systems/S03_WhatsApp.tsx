@@ -98,10 +98,7 @@ function WebSocketFlow() {
 
 export default function S03_WhatsApp({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(73);
-    const t = setTimeout(() => onComplete(73), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(73);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

@@ -6,7 +6,7 @@ import type { SystemPageProps } from './SystemPage';
 const sys = systems.find(s => s.id === 11)!;
 
 export default function S11_Instagram({ onProgress, onComplete }: SystemPageProps) {
-  useEffect(() => { onProgress(81); const t = setTimeout(() => onComplete(81), 8000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(81); }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

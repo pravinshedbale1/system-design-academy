@@ -68,10 +68,7 @@ function ChunkUploadVisual() {
 
 export default function S08_GoogleDrive({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(78);
-    const t = setTimeout(() => onComplete(78), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(78);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

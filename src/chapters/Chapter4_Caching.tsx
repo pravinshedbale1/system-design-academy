@@ -126,10 +126,7 @@ export default function Chapter4({ onProgress, onComplete }: ChapterProps) {
   const [cacheStep, setCacheStep] = useState(0);
 
   useEffect(() => {
-    onProgress(4);
-    const t = setTimeout(() => onComplete(4), 5000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(4);  }, []);
 
   const stepperSteps = cacheStepDefs.map(s => ({
     title: s.title,

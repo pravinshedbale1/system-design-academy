@@ -161,10 +161,7 @@ function CAPToggle() {
 
 export default function Chapter2({ onProgress, onComplete }: ChapterProps) {
   useEffect(() => {
-    onProgress(2);
-    const t = setTimeout(() => onComplete(2), 5000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(2);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

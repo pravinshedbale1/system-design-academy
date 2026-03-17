@@ -59,7 +59,7 @@ function ProxyFlowDiagram() {
 }
 
 export default function Chapter17_Proxies({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(17); const t = setTimeout(() => onComplete(17), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(17); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

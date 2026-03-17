@@ -62,7 +62,7 @@ function ConsistencyDemo() {
 }
 
 export default function Chapter15_ConsistencyModels({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(15); const t = setTimeout(() => onComplete(15), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(15); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

@@ -37,7 +37,7 @@ function Base62Demo() {
 }
 
 export default function S12_TinyURL({ onProgress, onComplete }: SystemPageProps) {
-  useEffect(() => { onProgress(82); const t = setTimeout(() => onComplete(82), 8000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(82); }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

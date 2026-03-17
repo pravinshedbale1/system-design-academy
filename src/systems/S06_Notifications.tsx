@@ -79,10 +79,7 @@ function NotificationFlowDiagram() {
 
 export default function S06_Notifications({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(76);
-    const t = setTimeout(() => onComplete(76), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(76);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

@@ -218,10 +218,7 @@ function ShardingDiagram() {
 
 export default function Chapter6({ onProgress, onComplete }: ChapterProps) {
   useEffect(() => {
-    onProgress(6);
-    const t = setTimeout(() => onComplete(6), 5000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(6);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

@@ -97,10 +97,7 @@ function TLSHandshake() {
 
 export default function Chapter8_Networking({ onProgress, onComplete }: ChapterProps) {
   useEffect(() => {
-    onProgress(8);
-    const t = setTimeout(() => onComplete(8), 12000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(8);  }, []);
 
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 

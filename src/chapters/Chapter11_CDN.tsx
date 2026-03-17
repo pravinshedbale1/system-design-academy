@@ -46,7 +46,7 @@ function CDNFlow() {
 }
 
 export default function Chapter11_CDN({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(11); const t = setTimeout(() => onComplete(11), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(11); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

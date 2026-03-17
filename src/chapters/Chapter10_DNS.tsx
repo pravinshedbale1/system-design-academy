@@ -38,7 +38,7 @@ function DNSResolver() {
 }
 
 export default function Chapter10_DNS({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(10); const t = setTimeout(() => onComplete(10), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(10); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

@@ -6,7 +6,7 @@ import type { SystemPageProps } from './SystemPage';
 const sys = systems.find(s => s.id === 15)!;
 
 export default function S15_Discord({ onProgress, onComplete }: SystemPageProps) {
-  useEffect(() => { onProgress(85); const t = setTimeout(() => onComplete(85), 8000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(85); }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

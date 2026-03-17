@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import Sidebar from './components/Layout/Sidebar';
+import ChapterFooter from './components/ChapterFooter';
 import { useProgress } from './hooks/useProgress';
 import { chapters } from './data/chapters';
 import { systems } from './data/systems';
@@ -36,6 +37,12 @@ const chapterComponents: Record<number, ComponentType<ChapterProps>> = {
   19: Chapter19, 20: Chapter20,
 };
 
+// Build a unified ordered list of all pages for prev/next navigation
+const allPages = [
+  ...chapters.map(c => ({ path: `/chapter/${c.id}`, label: c.title, progressId: c.id })),
+  ...systems.map(s => ({ path: `/system/${s.id}`, label: s.title, progressId: 70 + s.id })),
+];
+
 export default function App() {
   const { progress, markInProgress, markCompleted, getOverallPercent } = useProgress();
   const totalItems = chapters.length + systems.length;
@@ -48,34 +55,62 @@ export default function App() {
         <main className="ml-60 mt-14 min-h-[calc(100vh-3.5rem)]">
           <Routes>
             <Route path="/" element={<Navigate to="/chapter/1" replace />} />
-            {chapters.map((chapter) => {
+            {chapters.map((chapter, idx) => {
               const ChapterComponent = chapterComponents[chapter.id];
+              const pageIdx = idx; // chapters come first in allPages
+              const prev = pageIdx > 0 ? allPages[pageIdx - 1] : undefined;
+              const next = pageIdx < allPages.length - 1 ? allPages[pageIdx + 1] : undefined;
               return ChapterComponent ? (
                 <Route
                   key={chapter.id}
                   path={`/chapter/${chapter.id}`}
                   element={
-                    <ChapterComponent
-                      onProgress={() => markInProgress(chapter.id)}
-                      onComplete={() => markCompleted(chapter.id)}
-                    />
+                    <>
+                      <ChapterComponent
+                        onProgress={() => markInProgress(chapter.id)}
+                        onComplete={() => {}}
+                      />
+                      <ChapterFooter
+                        isCompleted={progress[chapter.id] === 'completed'}
+                        onComplete={() => markCompleted(chapter.id)}
+                        prevPath={prev?.path}
+                        prevLabel={prev?.label}
+                        nextPath={next?.path}
+                        nextLabel={next?.label}
+                      />
+                    </>
                   }
                 />
               ) : null;
             })}
-            {systems.map((system) => (
-              <Route
-                key={system.id}
-                path={`/system/${system.id}`}
-                element={
-                  <SystemPage
-                    systemId={system.id}
-                    onProgress={() => markInProgress(70 + system.id)}
-                    onComplete={() => markCompleted(70 + system.id)}
-                  />
-                }
-              />
-            ))}
+            {systems.map((system, idx) => {
+              const pageIdx = chapters.length + idx; // systems come after chapters
+              const prev = pageIdx > 0 ? allPages[pageIdx - 1] : undefined;
+              const next = pageIdx < allPages.length - 1 ? allPages[pageIdx + 1] : undefined;
+              return (
+                <Route
+                  key={system.id}
+                  path={`/system/${system.id}`}
+                  element={
+                    <>
+                      <SystemPage
+                        systemId={system.id}
+                        onProgress={() => markInProgress(70 + system.id)}
+                        onComplete={() => {}}
+                      />
+                      <ChapterFooter
+                        isCompleted={progress[70 + system.id] === 'completed'}
+                        onComplete={() => markCompleted(70 + system.id)}
+                        prevPath={prev?.path}
+                        prevLabel={prev?.label}
+                        nextPath={next?.path}
+                        nextLabel={next?.label}
+                      />
+                    </>
+                  }
+                />
+              );
+            })}
             <Route path="*" element={<Navigate to="/chapter/1" replace />} />
           </Routes>
         </main>

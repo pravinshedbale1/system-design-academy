@@ -72,7 +72,7 @@ function ErasureCodingVisual() {
 }
 
 export default function Chapter12_StorageSystems({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(12); const t = setTimeout(() => onComplete(12), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(12); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

@@ -107,10 +107,7 @@ function IdempotencyDemo() {
 
 export default function S10_Payments({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(80);
-    const t = setTimeout(() => onComplete(80), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(80);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">

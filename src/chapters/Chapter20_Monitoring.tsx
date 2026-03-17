@@ -39,7 +39,7 @@ function SLOCalc() {
 }
 
 export default function Chapter20_Monitoring({ onProgress, onComplete }: ChapterProps) {
-  useEffect(() => { onProgress(20); const t = setTimeout(() => onComplete(20), 12000); return () => clearTimeout(t); }, []);
+  useEffect(() => { onProgress(20); }, []);
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (

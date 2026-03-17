@@ -78,10 +78,7 @@ function KafkaTopicVisual() {
 
 export default function S07_MessageQueue({ onProgress, onComplete }: SystemPageProps) {
   useEffect(() => {
-    onProgress(77);
-    const t = setTimeout(() => onComplete(77), 8000);
-    return () => clearTimeout(t);
-  }, []);
+    onProgress(77);  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
