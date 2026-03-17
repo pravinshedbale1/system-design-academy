@@ -36,7 +36,7 @@ function RequirementsSection() {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl border border-emerald-200 dark:border-emerald-800 p-5">
         <h4 className="font-bold text-emerald-700 dark:text-emerald-400 mb-3">✅ Functional Requirements</h4>
         <div className="space-y-2">
@@ -86,7 +86,7 @@ function BackOfEnvelope() {
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { label: 'Writes / Day', value: writesPerDay, set: setWritesPerDay, min: 100_000, max: 10_000_000, step: 100_000 },
           { label: 'Reads / Day', value: readsPerDay, set: setReadsPerDay, min: 1_000_000, max: 100_000_000, step: 1_000_000 },
@@ -108,7 +108,7 @@ function BackOfEnvelope() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {[
           { label: 'Write RPS', value: `${writeRps.toFixed(1)} req/s`, color: 'indigo' },
           { label: 'Read RPS', value: `${readRps.toFixed(0)} req/s`, color: 'purple' },
@@ -236,7 +236,7 @@ export default function Chapter7({ onProgress }: ChapterProps) {
     onProgress(82);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       {/* Header */}
       <div>
         <div className="flex items-center gap-3 mb-3">
@@ -266,7 +266,7 @@ export default function Chapter7({ onProgress }: ChapterProps) {
       <section className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 space-y-4">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">🧠 How to Approach Any System Design Interview</h2>
         <p className="text-gray-600 dark:text-gray-400">Every system design interview follows roughly the same structure. The URL shortener is a perfect template for this process:</p>
-        <div className="grid grid-cols-3 gap-3 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
           {[
             { step: '~5 min', label: 'Clarify Requirements', desc: 'Never start designing without agreeing on scope. Functional vs non-functional requirements. What\'s in scope? Expected scale?' },
             { step: '~5 min', label: 'Estimate Scale', desc: 'Back-of-envelope calculations: QPS, storage, bandwidth. These numbers drive architectural decisions.' },

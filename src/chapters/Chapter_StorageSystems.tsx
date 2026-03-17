@@ -76,7 +76,7 @@ export default function Chapter12_StorageSystems({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 11</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">💾 Storage Systems</h1>
@@ -122,7 +122,7 @@ export default function Chapter12_StorageSystems({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           At the infrastructure level, there are three fundamental ways to organize and access stored data. Each is designed for a fundamentally different access pattern: random I/O (block), hierarchical browsing (file), or key-value retrieval (object).
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Block Storage', icon: '🧱', desc: 'Data is stored as fixed-size blocks (typically 4KB-64KB) on raw disk. The operating system builds a filesystem on top. Think of it like a blank notebook — you decide how to organize pages.', examples: 'AWS EBS, Azure Managed Disk, SAN/iSCSI', use: 'Databases (PostgreSQL, MySQL), boot volumes, VM disks', perf: '< 1ms latency, 64K IOPS', analogy: 'Like a hard drive attached to your laptop — lowest latency, but only one machine can use it.' },
             { name: 'File Storage', icon: '📂', desc: 'Data is organized in a hierarchical directory tree with paths like /home/user/file.txt. Multiple machines can share access via network protocols (NFS, SMB/CIFS).', examples: 'AWS EFS, Azure Files, NFS, GlusterFS', use: 'Shared configs, CMS content, legacy apps, home directories', perf: '1-5ms latency, shared access', analogy: 'Like a shared network drive at an office — everyone can browse folders, but it\'s slower than local storage.' },
@@ -159,7 +159,7 @@ export default function Chapter12_StorageSystems({ onProgress }: ChapterProps) {
           Amazon S3 promises <strong className="text-gray-800 dark:text-gray-200">99.999999999% durability</strong> — if you stored 10 million objects, you'd statistically lose one every 10,000 years. Here's the engineering behind this guarantee:
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               { step: '1', title: 'PUT Object', desc: 'Client uploads via HTTPS. Object is received by the S3 frontend and a unique key is assigned. Metadata (content-type, custom headers, ACL) is stored separately from the blob.' },
               { step: '2', title: 'Erasure Coding', desc: 'Instead of storing 3 full copies (3x storage cost), S3 uses Reed-Solomon erasure coding — the object is split into data fragments + parity fragments. This achieves the same fault tolerance at ~1.5x storage cost.' },
@@ -218,7 +218,7 @@ export default function Chapter12_StorageSystems({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           Both store large amounts of data, but they solve fundamentally different problems. A <strong className="text-gray-800 dark:text-gray-200">data lake</strong> is like dumping all your photos, documents, and receipts into a giant storage bin — cheap and flexible, but you need to organize them when you want to find something. A <strong className="text-gray-800 dark:text-gray-200">data warehouse</strong> is like a neatly organized filing cabinet — everything is pre-sorted and labeled, so queries are fast, but loading data requires upfront effort (ETL).
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">🏞️ Data Lake</h3>
             <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1.5">

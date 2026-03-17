@@ -9,11 +9,11 @@ export default function S14_SearchEngine({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(84); }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Architecture Overview" note="A search engine has 3 stages: Crawl → Index → Serve.">
-        <div className="grid grid-cols-3 gap-3 text-xs">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           {[
             { name: '🕷️ Crawling', desc: 'Discover and download web pages. BFS traversal of URLs. Respect robots.txt. Politeness: max 1 req/sec per domain.' },
             { name: '📑 Indexing', desc: 'Parse HTML → extract text → build inverted index. Map each word to list of document IDs + positions.' },
@@ -64,7 +64,7 @@ export default function S14_SearchEngine({ onProgress }: SystemPageProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
             Store popular queries in a Trie (prefix tree). Each node stores the top-K completions by frequency. On each keystroke, traverse trie to the prefix node and return pre-computed top-K suggestions.
           </p>
-          <div className="grid grid-cols-2 gap-3 text-xs text-gray-600 dark:text-gray-400">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-600 dark:text-gray-400">
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
               <div className="font-semibold text-gray-800 dark:text-gray-200">Requirements</div>
               <p>P99 latency {'<'} 50ms. Update trie weekly from query logs. Shard trie by prefix range (a-m, n-z).</p>

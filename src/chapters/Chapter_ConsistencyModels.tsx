@@ -40,7 +40,7 @@ function ConsistencyDemo() {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-3 gap-3 text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-center">
         {[
           { label: 'Leader', value: current.leader, color: '#6366f1' },
           { label: 'Replica 1', value: current.r1, color: '#10b981' },
@@ -66,7 +66,7 @@ export default function Chapter15_ConsistencyModels({ onProgress }: ChapterProps
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 14</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🎯 Consistency Models</h1>
@@ -154,7 +154,7 @@ export default function Chapter15_ConsistencyModels({ onProgress }: ChapterProps
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           ACID and BASE represent two fundamental approaches to data management. ACID prioritizes <strong className="text-gray-800 dark:text-gray-200">correctness</strong> (the data is always right). BASE prioritizes <strong className="text-gray-800 dark:text-gray-200">availability</strong> (the system is always up). Most real-world systems use a combination — ACID for the transaction core (payments, inventory), BASE for everything else (feeds, analytics, recommendations).
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-blue-200 dark:border-blue-800 p-5 space-y-2">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">🔒 ACID (Pessimistic)</h3>
             <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-2">
@@ -231,7 +231,7 @@ export default function Chapter15_ConsistencyModels({ onProgress }: ChapterProps
           Here's how real companies pick consistency models. Notice the pattern: <strong className="text-gray-800 dark:text-gray-200">money → strong, content → eventual, user-facing state → read-your-writes</strong>.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { system: '💰 Bank Transfers', consistency: 'Strong (Serializable)', reason: 'Money must never be double-spent. A failed transfer that shows as "completed" is catastrophic. ACID transactions mandatory.' },
               { system: '📱 Social Media Feed', consistency: 'Eventual', reason: 'A tweet showing 2 seconds late won\'t cause harm. Availability > consistency. Users don\'t notice small delays.' },

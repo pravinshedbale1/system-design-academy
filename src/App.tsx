@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react';
 import type { ComponentType } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
@@ -46,13 +47,23 @@ const allPages = [
 export default function App() {
   const { progress, markInProgress, markCompleted, getOverallPercent } = useProgress();
   const totalItems = chapters.length + systems.length;
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const handleMenuOpen = useCallback(() => setSidebarOpen(true), []);
+  const handleMenuClose = useCallback(() => setSidebarOpen(false), []);
 
   return (
     <HashRouter>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <Navbar overallPercent={getOverallPercent(totalItems)} />
-        <Sidebar progress={progress} />
-        <main className="ml-60 mt-14 min-h-[calc(100vh-3.5rem)]">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 w-full">
+        <Navbar 
+          overallPercent={getOverallPercent(totalItems)} 
+          onMenuClick={handleMenuOpen}
+        />
+        <Sidebar 
+          progress={progress} 
+          isOpen={sidebarOpen} 
+          onClose={handleMenuClose} 
+        />
+        <main className="md:ml-60 mt-14 min-h-[calc(100vh-3.5rem)] transition-all duration-300">
           <Routes>
             <Route path="/" element={<Navigate to="/chapter/1" replace />} />
             {chapters.map((chapter, idx) => {

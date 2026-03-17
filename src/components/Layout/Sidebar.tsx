@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { chapters } from '../../data/chapters';
 import { systems } from '../../data/systems';
 import type { ChapterStatus } from '../../hooks/useProgress';
-import { CheckCircle, Circle, BookOpen, Cpu, ChevronDown, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { CheckCircle, Circle, BookOpen, Cpu, ChevronDown, ChevronRight, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 interface SidebarProps {
   progress: Record<number, ChapterStatus>;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 function StatusDot({ status }: { status: ChapterStatus }) {
@@ -30,14 +32,43 @@ const diffColors = {
   Hard: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30',
 };
 
-export default function Sidebar({ progress }: SidebarProps) {
+export default function Sidebar({ progress, isOpen, onClose }: SidebarProps) {
   const location = useLocation();
   const [conceptsOpen, setConceptsOpen] = useState(true);
   const [systemsOpen, setSystemsOpen] = useState(true);
 
+  // Auto-close on route change for mobile
+  useEffect(() => {
+    onClose();
+  }, [location.pathname, onClose]);
+
   return (
-    <aside className="fixed top-14 left-0 w-60 h-[calc(100vh-3.5rem)] bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto z-30">
-      <div className="py-3 px-3 space-y-1">
+    <>
+      {/* Mobile overlay backdrop */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/50 z-[45] md:hidden backdrop-blur-sm cursor-pointer"
+          />
+        )}
+      </AnimatePresence>
+
+      <aside 
+        className={`fixed top-14 bottom-0 w-[280px] md:w-60 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto z-[50] transition-transform duration-300 left-0 md:translate-x-0 ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="py-3 px-3 space-y-1">
+          {/* Mobile close button inside sidebar */}
+          <div className="flex justify-end md:hidden mb-2">
+            <button onClick={onClose} className="p-1.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <X size={20} />
+            </button>
+          </div>
 
         {/* ── Concepts Section */}
         <button
@@ -131,5 +162,6 @@ export default function Sidebar({ progress }: SidebarProps) {
 
       </div>
     </aside>
+    </>
   );
 }

@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { chapters } from '../../data/chapters';
-import { Moon, Sun, Layers } from 'lucide-react';
+import { Moon, Sun, Layers, Menu } from 'lucide-react';
 
 interface NavbarProps {
   overallPercent: number;
+  onMenuClick: () => void;
 }
 
-export default function Navbar({ overallPercent }: NavbarProps) {
+export default function Navbar({ overallPercent, onMenuClick }: NavbarProps) {
   const [dark, setDark] = useState(() => {
     return localStorage.getItem('sda-theme') === 'dark' ||
       (!localStorage.getItem('sda-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -25,7 +26,14 @@ export default function Navbar({ overallPercent }: NavbarProps) {
   }, [dark]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-14 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 z-40 flex items-center px-6 gap-4">
+    <header className="fixed top-0 left-0 right-0 h-14 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 z-[60] flex items-center px-4 md:px-6 gap-3 md:gap-4">
+      <button 
+        onClick={onMenuClick}
+        className="relative z-[100] md:hidden p-1.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors pointer-events-auto"
+      >
+        <Menu size={22} />
+      </button>
+
       <Link to="/chapter/1" className="flex items-center gap-2.5 flex-shrink-0">
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow">
           <Layers className="w-4 h-4 text-white" />
@@ -36,7 +44,7 @@ export default function Navbar({ overallPercent }: NavbarProps) {
         </div>
       </Link>
 
-      <div className="flex-1 flex items-center gap-3 ml-4">
+      <div className="hidden md:flex flex-1 items-center gap-3 ml-4">
         <div className="flex-1 max-w-xs">
           <div className="h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
             <motion.div

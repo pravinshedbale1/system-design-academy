@@ -80,7 +80,7 @@ function ScalingDiagram() {
   );
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Vertical Scaling */}
       <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
         <h4 className="font-semibold text-center mb-4 text-gray-900 dark:text-white">⬆️ Vertical Scaling</h4>
@@ -143,7 +143,7 @@ function ScalingDiagram() {
 // ── Stateless vs Stateful Diagram
 function StatelessDiagram() {
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Stateful (bad) */}
       <div className="bg-white dark:bg-gray-800 rounded-2xl border border-red-200 dark:border-red-800 p-5">
         <div className="flex items-center gap-2 mb-4">
@@ -209,7 +209,7 @@ export default function Chapter1({ onProgress }: ChapterProps) {
     onProgress(1);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       {/* Header */}
       <div>
         <div className="flex items-center gap-3 mb-3">
@@ -230,7 +230,7 @@ export default function Chapter1({ onProgress }: ChapterProps) {
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           A system is scalable if adding more resources (servers, CPUs, memory) produces a proportional improvement in capacity. Perfect linear scalability is the goal but rarely achieved in practice due to coordination overhead, database bottlenecks, and shared state.
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { label: 'Performance Scalability', icon: '⚡', desc: 'System gets faster (lower latency) as you add resources. Rare — most systems get slower due to coordination.' },
             { label: 'Load Scalability', icon: '📦', desc: 'System handles more concurrent users without degradation. This is the most common goal — handled by horizontal scaling.' },
@@ -252,9 +252,9 @@ export default function Chapter1({ onProgress }: ChapterProps) {
               { term: 'SLO (Service Level Objective)', def: 'An internal target — e.g., "99.9% of requests must complete in < 200ms". The engineering team owns meeting this.' },
               { term: 'SLA (Service Level Agreement)', def: 'A contractual commitment to customers — e.g., "99.9% uptime or you get a credit". Violating an SLA has financial consequences.' },
             ].map(s => (
-              <div key={s.term} className="flex gap-3">
-                <span className="text-indigo-500 font-mono text-xs font-bold mt-0.5 whitespace-nowrap">{s.term}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">— {s.def}</span>
+              <div key={s.term} className="space-y-0.5">
+                <span className="text-indigo-500 font-mono text-xs font-bold block">{s.term}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400 block">{s.def}</span>
               </div>
             ))}
           </div>
@@ -337,7 +337,7 @@ export default function Chapter1({ onProgress }: ChapterProps) {
           The fundamental rule of horizontal scaling: <strong className="text-gray-700 dark:text-gray-200">servers must be stateless</strong>. If a server stores session data locally, requests from the same user <em>must</em> always hit the same server (sticky sessions) — which breaks load balancing and prevents fault tolerance.
         </p>
         <StatelessDiagram />
-        <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4">
             <div className="font-semibold text-gray-700 dark:text-gray-300 mb-2">What to offload from servers:</div>
             <ul className="space-y-1 text-gray-500 dark:text-gray-400">
@@ -362,12 +362,12 @@ export default function Chapter1({ onProgress }: ChapterProps) {
       {/* Interview Tips */}
       <section className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-2xl border border-indigo-200 dark:border-indigo-800 p-6">
         <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-3">🎯 Interview Key Points</h2>
-        <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span>Always start a system design with: "Is this read-heavy or write-heavy?" — it determines your entire architecture.</li>
-          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span>The interviewer expects you to mention <strong>stateless servers</strong> + <strong>load balancer</strong> + <strong>external session store</strong> as your base horizontal scaling setup.</li>
-          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span>Response time doesn't degrade linearly — it spikes exponentially past ~70% capacity. Design for 50–60% average utilization to have headroom.</li>
-          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span>Mention SLOs explicitly: "We'd need 99.9% uptime, which gives us 8.7 hours of downtime budget per year."</li>
-          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span>Distinguish between <em>throughput</em> (requests/second the system can handle) vs <em>scalability</em> (how gracefully capacity grows with resources).</li>
+        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span><span>Always start a system design with: "Is this read-heavy or write-heavy?" — it determines your entire architecture.</span></li>
+          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span><span>The interviewer expects you to mention <strong>stateless servers</strong> + <strong>load balancer</strong> + <strong>external session store</strong> as your base horizontal scaling setup.</span></li>
+          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span><span>Response time doesn't degrade linearly — it spikes exponentially past ~70% capacity. Design for 50–60% average utilization to have headroom.</span></li>
+          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span><span>Mention SLOs explicitly: "We'd need 99.9% uptime, which gives us 8.7 hours of downtime budget per year."</span></li>
+          <li className="flex gap-2"><span className="text-indigo-500 flex-shrink-0">→</span><span>Distinguish between <em>throughput</em> (requests/second the system can handle) vs <em>scalability</em> (how gracefully capacity grows with resources).</span></li>
         </ul>
       </section>
     </div>

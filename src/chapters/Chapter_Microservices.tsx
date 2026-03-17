@@ -36,7 +36,7 @@ function CircuitBreaker() {
         <button onClick={() => simulateCall(false)} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400">❌ Failed Call</button>
         {state === 'open' && <button onClick={tryReset} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">🔄 Try Half-Open</button>}
       </div>
-      <div className="grid grid-cols-3 gap-2 text-xs">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
         {[
           { s: 'CLOSED', desc: 'Normal operation. Requests pass through. Failure counter tracks errors.', from: 'Failures < threshold' },
           { s: 'OPEN', desc: 'All requests immediately fail-fast. No calls to the downstream service.', from: `Failures ≥ ${threshold}` },
@@ -57,7 +57,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 17</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🏗️ Microservices Architecture</h1>
@@ -87,7 +87,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           The industry has over-hyped microservices. The truth is: <strong className="text-gray-800 dark:text-gray-200">most startups should start with a monolith</strong>. Microservices make sense when your organization needs independent team autonomy. It's an organizational pattern as much as a technical one.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">🏢 Monolith</h3>
             <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1.5">
@@ -134,7 +134,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
           The hardest part of microservices isn't the technology — it's <strong className="text-gray-800 dark:text-gray-200">deciding where to draw the boundaries</strong>. Get this wrong, and you'll have chatty services that constantly call each other (distributed monolith). Get it right, and each service is autonomous.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { name: '🏢 By Business Domain (DDD)', desc: 'Align services with business capabilities: Order Service, Payment Service, Inventory Service. Each owns its data. This is the recommended approach — inspired by Domain-Driven Design (DDD) bounded contexts.' },
               { name: '📊 By Data Ownership', desc: 'Each service owns its own database. No shared databases. If Service A needs Service B\'s data, it calls an API. This prevents coupling at the data layer.' },
@@ -193,7 +193,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 border border-blue-200 dark:border-blue-800">
               <div className="font-semibold text-blue-700 dark:text-blue-400 mb-1">Choreography (Event-Driven)</div>
               <div className="text-gray-600 dark:text-gray-400">Each service emits events, and the next service reacts. No central coordinator. Simple for 2-3 services, but becomes a tangled web with more. Debugging is hard — no single place to see the saga's state.</div>
@@ -213,7 +213,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
           Key Resilience Patterns
         </h2>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { name: '⚡ Circuit Breaker', desc: 'After N failures, stop calling the downstream service. Fast-fail instead of waiting. Prevents cascading failures.', tool: 'Resilience4j, Hystrix, Envoy' },
               { name: '🚢 Bulkhead', desc: 'Isolate resources into pools (like ship compartments). A slow payment service shouldn\'t exhaust threads for the user service.', tool: 'Thread pools, connection pools' },
@@ -240,7 +240,7 @@ export default function Chapter18_Microservices({ onProgress }: ChapterProps) {
           In microservices, service instances are ephemeral — they start, stop, move, and scale dynamically. Hardcoding IP addresses doesn't work. <strong className="text-gray-800 dark:text-gray-200">Service discovery</strong> is the mechanism that lets services find each other dynamically.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { name: 'Client-Side Discovery', desc: 'Client queries a service registry (e.g., Eureka, Consul) for available instances, then load-balances locally. The client is aware of all instances.', ex: 'Netflix Eureka + Ribbon' },
               { name: 'Server-Side Discovery', desc: 'Client sends to a load balancer or DNS name. The infrastructure (K8s Service, AWS ALB) routes to a healthy instance. Client is unaware of individual instances.', ex: 'Kubernetes Service, AWS ALB, Consul Connect' },

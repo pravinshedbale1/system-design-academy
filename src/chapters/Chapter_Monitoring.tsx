@@ -21,7 +21,7 @@ function SLOCalc() {
         <input type="range" min={1} max={5} value={nines} onChange={e => setNines(Number(e.target.value))} className="flex-1 accent-indigo-500" />
         <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400 text-lg">{v.pct}</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
           <div className="text-xs text-gray-500">Yearly downtime</div>
           <div className="font-mono font-bold text-sm text-red-500">{v.down}</div>
@@ -43,7 +43,7 @@ export default function Chapter20_Monitoring({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 19</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">📊 Monitoring & Observability</h1>
@@ -70,7 +70,7 @@ export default function Chapter20_Monitoring({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           You need ALL three pillars working together. Metrics tell you something is wrong, logs tell you what happened, and traces tell you where in the chain it happened. Missing any one of these creates blind spots.
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Logs', icon: '📝', desc: 'Discrete timestamped events. Answer "What happened?" Use structured JSON format (not plaintext) so they are queryable. Always include: timestamp, service_name, request_id, user_id, level, message.', tools: 'ELK Stack (Elasticsearch + Logstash + Kibana), Grafana Loki, CloudWatch Logs', color: '#6366f1', tip: 'Never log PII (emails, credit cards). Rotate and expire old logs to control costs.' },
             { name: 'Metrics', icon: '📈', desc: 'Numeric measurements over time. Answer "How much?" Two key frameworks: RED (Rate, Errors, Duration) for services. USE (Utilization, Saturation, Errors) for infrastructure (CPU, memory, disk).', tools: 'Prometheus + Grafana (gold standard), Datadog, CloudWatch Metrics', color: '#10b981', tip: 'Track P50, P95, P99 latency — not averages. Averages hide tail latency that destroys user experience.' },
@@ -96,7 +96,7 @@ export default function Chapter20_Monitoring({ onProgress }: ChapterProps) {
           These three concepts form a hierarchy: <strong className="text-gray-800 dark:text-gray-200">SLIs are what you measure, SLOs are your internal targets, SLAs are external contracts with customers</strong>. Google popularized this framework. In interviews, showing that you think about reliability in terms of SLOs demonstrates mature engineering thinking.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 space-y-3">
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             <div className="rounded-xl p-3 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
               <div className="font-bold text-indigo-600 mb-1">SLI (Service Level Indicator)</div>
               <p className="text-gray-600 dark:text-gray-400">The metric you measure. A quantitative measurement of a specific aspect of service quality.</p>
@@ -141,7 +141,7 @@ export default function Chapter20_Monitoring({ onProgress }: ChapterProps) {
           Bad alerting is worse than no alerting — it creates <strong className="text-gray-800 dark:text-gray-200">alert fatigue</strong>. When on-call engineers get 200 alerts per night, they start ignoring them. Good alerting is actionable, symptom-based, and tiered by severity.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { rule: '🎯 Alert on Symptoms', desc: 'Alert on user-facing impact: "Response time > 500ms" or "Error rate > 1%". NOT on causes: "CPU > 80%" (who cares if CPU is high but users are happy?).' },
               { rule: '🪟 Multi-Window Alerting', desc: 'Use short + long windows to avoid noise: "Error > 1% for 5min AND > 0.5% for 1hr." This catches real incidents while ignoring brief spikes.' },

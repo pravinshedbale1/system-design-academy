@@ -42,7 +42,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 18</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🔐 Security & Authentication</h1>
@@ -69,7 +69,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           There are three main approaches to authentication. The choice depends on your architecture: sessions for traditional web apps, JWTs for APIs and SPAs, and OAuth for third-party login.
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Session-Based', icon: '🍪', desc: 'Server creates a session on login and stores it (Redis/DB). A session ID is sent as a cookie with every request. The server looks up the session to identify the user.', pros: 'Easy to revoke — just delete the session. Server-controlled.', cons: 'Stateful — requires shared session store for multiple servers. Doesn\'t work well for mobile APIs.', use: 'Traditional web apps (Rails, Django)' },
             { name: 'JWT (Token-Based)', icon: '🎫', desc: 'Server creates a signed token containing user info (claims). Client stores the token and sends it in the Authorization header. Server verifies the signature — no database lookup needed.', pros: 'Stateless — any server can verify. Perfect for microservices and mobile.', cons: 'Can\'t revoke until expiry (unless you maintain a blocklist, which defeats the purpose).', use: 'APIs, SPAs, mobile apps, microservices' },
@@ -103,7 +103,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
             <span className="text-gray-400">.</span>
             <span className="text-blue-500">SflKxwRJSMeKKF2QT4fwpM</span>
           </div>
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             {[
               { part: 'Header', color: '#ef4444', content: '{"alg": "HS256", "typ": "JWT"}', desc: 'Algorithm (HS256 = HMAC-SHA256) and token type' },
               { part: 'Payload', color: '#8b5cf6', content: '{"user_id": "123", "role": "admin", "exp": 1700000}', desc: 'Claims: user data + expiry. NOT encrypted — just base64-encoded.' },
@@ -145,7 +145,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           After verifying WHO the user is (authentication), you need to verify WHAT they can do (authorization). RBAC groups permissions into roles (simple, covers 80% of cases). ABAC evaluates dynamic attributes for fine-grained control.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">👥 RBAC (Role-Based)</h3>
             <div className="text-xs text-gray-600 dark:text-gray-400 space-y-2">
@@ -183,7 +183,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           Encryption protects data in two states: when it's <strong className="text-gray-800 dark:text-gray-200">stored on disk</strong> (at rest) and when it's <strong className="text-gray-800 dark:text-gray-200">moving over the network</strong> (in transit). In interviews, always mention both — they protect against different threats.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-amber-600 dark:text-amber-400 mb-2">🔒 At Rest (disk)</h3>
             <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1.5">
@@ -219,7 +219,7 @@ export default function Chapter19_Security({ onProgress }: ChapterProps) {
           Knowing the top attack vectors helps you proactively design secure systems. In interviews, mentioning these defenses shows security awareness — a trait interviewers look for at senior levels.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-4">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { name: 'SQL Injection', desc: 'Attacker crafts malicious SQL in user input: \' OR 1=1 --', fix: 'Parameterized queries (prepared statements), ORMs, input validation. NEVER concatenate user input into SQL strings.', severity: '🔴 Critical' },
               { name: 'XSS (Cross-Site Scripting)', desc: 'Inject malicious JavaScript into web pages viewed by other users (steal cookies, redirect).', fix: 'Output encoding (escape HTML), Content Security Policy (CSP) headers, sanitize user-generated HTML.', severity: '🔴 Critical' },

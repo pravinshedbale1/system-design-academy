@@ -74,7 +74,7 @@ export default function Chapter14_Sharding({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 13</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🧩 Sharding & Partitioning</h1>
@@ -91,7 +91,7 @@ export default function Chapter14_Sharding({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             When a single database server can't handle the load (CPU, memory, disk I/O, or storage capacity), you <strong className="text-gray-800 dark:text-gray-200">horizontally partition</strong> data across multiple machines. Each machine holds a <strong className="text-gray-800 dark:text-gray-200">shard</strong> — a subset of the total data.
           </p>
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             {[
               { metric: 'Disk Full', limit: '> 2TB single node', icon: '💾' },
               { metric: 'Write Throughput', limit: '> 10K writes/sec', icon: '✍️' },
@@ -112,7 +112,7 @@ export default function Chapter14_Sharding({ onProgress }: ChapterProps) {
           <span className="w-7 h-7 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center">2</span>
           Sharding Strategies
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">🔢 Hash-Based Sharding</h3>
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 font-mono text-xs text-gray-600 dark:text-gray-400 mb-2">

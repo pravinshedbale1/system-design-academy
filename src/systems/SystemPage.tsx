@@ -28,7 +28,7 @@ const systemComponents: Record<number, LazySystem> = {
 
 function Skeleton() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-6">
       {[1, 2, 3].map(i => (
         <motion.div
           key={i}

@@ -60,7 +60,7 @@ function NotificationFlowDiagram() {
         <text x="520" y="195" textAnchor="middle" fontSize="20">📱</text>
         <text x="520" y="210" textAnchor="middle" fontSize="8" fill="#94a3b8">User Device</text>
       </svg>
-      <div className="grid grid-cols-4 gap-2 text-xs">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
         {[
           { label: 'Priority', val: activeChannel === 0 ? 'High (instant)' : activeChannel === 1 ? 'Low (seconds)' : activeChannel === 2 ? 'High (SMS)' : 'Realtime' },
           { label: 'Cost', val: activeChannel === 0 ? '~$0' : activeChannel === 1 ? '$0.001/email' : activeChannel === 2 ? '$0.0075/SMS' : '~$0' },
@@ -82,7 +82,7 @@ export default function S06_Notifications({ onProgress }: SystemPageProps) {
     onProgress(76);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">
@@ -117,7 +117,7 @@ export default function S06_Notifications({ onProgress }: SystemPageProps) {
 
       <Section step={4} title="Reliability: Retries & Deduplication">
         <TheoryBox title="The Hard Problems" icon="⚠️">
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="space-y-2">
               <div className="font-semibold text-gray-700 dark:text-gray-300">Retry Strategy</div>
               <ul className="text-gray-600 dark:text-gray-400 space-y-1 text-xs">

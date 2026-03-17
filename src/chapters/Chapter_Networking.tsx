@@ -101,7 +101,7 @@ export default function Chapter8_Networking({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       {/* Header */}
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 7</div>
@@ -116,7 +116,7 @@ export default function Chapter8_Networking({ onProgress }: ChapterProps) {
           TCP vs UDP
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">Two transport layer protocols that underpin all internet communication. The choice between them is a fundamental design decision.</p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">📦 TCP (Transmission Control Protocol)</h3>
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
@@ -205,7 +205,7 @@ export default function Chapter8_Networking({ onProgress }: ChapterProps) {
           Real-Time Communication
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">Three approaches to push data to clients. The right choice depends on your latency requirements and connection count.</p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Long Polling', icon: '🔄', desc: 'Client makes HTTP request, server holds it open until data is available or timeout. Client immediately re-connects.', pros: 'Simple to implement, works everywhere', cons: 'Connection overhead per user, not truly real-time', use: 'Simple notifications, chat (fallback)' },
             { name: 'Server-Sent Events', icon: '📡', desc: 'Server pushes events over a single long-lived HTTP connection. One-directional: server → client only.', pros: 'Auto-reconnect, event IDs, simple', cons: 'Unidirectional, max ~6 connections/domain in HTTP/1.1', use: 'Live feeds, stock tickers, CI/CD logs' },

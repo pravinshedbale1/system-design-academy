@@ -63,7 +63,7 @@ export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 16</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🛡️ Proxies & API Gateway</h1>
@@ -93,7 +93,7 @@ export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
           <ProxyFlowDiagram />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">➡️ Forward Proxy</h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">Sits between <strong>client</strong> and internet. The client explicitly configures its traffic to go through the proxy. The destination server only sees the proxy's IP address.</p>
@@ -132,7 +132,7 @@ export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Think of it this way: without a gateway, a mobile app loading a product page might need to call <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">users.internal:8080</code>, <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">products.internal:8081</code>, and <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">reviews.internal:8082</code> separately. With a gateway, the app calls one endpoint: <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">api.myapp.com/product/123</code> — the gateway fans out internally, aggregates, and returns one response.
           </p>
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             {[
               { name: '🔐 Authentication', desc: 'Validates JWT/OAuth tokens before forwarding to services. Centralizes auth logic — services don\'t need to verify tokens.' },
               { name: '⚡ Rate Limiting', desc: 'Throttles per-user, per-IP, or per-API-key requests. Protects downstream services from abuse and denial-of-service.' },
@@ -171,7 +171,7 @@ export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             The "sidecar" analogy: imagine a motorcycle (your service) with a sidecar attached (proxy). The passenger in the sidecar handles all communication — answering the phone, checking maps, negotiating with toll booths — while the driver focuses purely on driving (business logic). The sidecar proxy (typically Envoy) intercepts ALL incoming and outgoing traffic from the service, handling networking concerns without the service code being aware.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h4 className="font-semibold text-sm text-gray-800 dark:text-gray-200 mb-2">What the Sidecar Handles:</h4>
               <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1.5">
@@ -259,7 +259,7 @@ export default function Chapter17_Proxies({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
           In production, you <strong className="text-gray-800 dark:text-gray-200">terminate TLS at the reverse proxy</strong>, not at each application server. This means the proxy handles decryption (HTTPS → HTTP) and forwards plain HTTP internally. Why? Three reasons:
         </p>
-        <div className="grid grid-cols-3 gap-3 text-xs">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
             <div className="font-semibold text-gray-800 dark:text-gray-200 mb-1">🔑 Simplified cert management</div>
             <p className="text-gray-600 dark:text-gray-400">Manage certificates in ONE place (the proxy) instead of on every application server.</p>

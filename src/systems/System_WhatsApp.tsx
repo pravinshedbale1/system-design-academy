@@ -101,7 +101,7 @@ export default function S03_WhatsApp({ onProgress }: SystemPageProps) {
     onProgress(73);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">
@@ -142,7 +142,7 @@ export default function S03_WhatsApp({ onProgress }: SystemPageProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
             For a 100M-member group (like a community), you cannot fan-out synchronously. WhatsApp caps groups at 1,024 members for this reason. For larger audiences, it uses a broadcast model similar to Twitter's fan-out on read.
           </p>
-          <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
             <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
               <div className="font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Small groups (&lt;1K)</div>
               <p className="text-xs text-gray-500 dark:text-gray-400">Fan-out on write to all member servers. Fast delivery.</p>

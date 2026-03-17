@@ -65,7 +65,7 @@ function KafkaPartitionViz() {
         </button>
         <span className="text-[10px] text-gray-500">Messages are distributed across partitions by key hash</span>
       </div>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {[0, 1, 2].map(p => (
           <div key={p} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
             <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Partition {p}</div>
@@ -89,7 +89,7 @@ export default function Chapter16_MessageQueues({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 15</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">📬 Message Queues</h1>
@@ -117,7 +117,7 @@ export default function Chapter16_MessageQueues({ onProgress }: ChapterProps) {
           Core Benefits of Asynchronous Messaging
         </h2>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               { name: '🔗 Decoupling', desc: 'Producer and consumer don\'t know about each other. You can replace, scale, or redeploy either side independently. This is the #1 benefit — it enables independent team velocity.' },
               { name: '📊 Load Leveling (Buffering)', desc: 'During traffic spikes (Black Friday), the queue absorbs the burst. Consumers process at a steady rate. Without a queue, your servers would crash under the spike.' },
@@ -142,7 +142,7 @@ export default function Chapter16_MessageQueues({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           These are two fundamental messaging patterns. The choice depends on whether you want <strong className="text-gray-800 dark:text-gray-200">one consumer per message</strong> (task distribution) or <strong className="text-gray-800 dark:text-gray-200">all consumers per message</strong> (event broadcasting).
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">📨 Point-to-Point (Queue)</h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Each message is consumed by exactly ONE consumer. Multiple consumers compete for messages, distributing the workload.</p>
@@ -214,7 +214,7 @@ export default function Chapter16_MessageQueues({ onProgress }: ChapterProps) {
           Apache Kafka is the most popular distributed event streaming platform. It handles <strong className="text-gray-800 dark:text-gray-200">trillions of events per day</strong> at companies like LinkedIn, Netflix, and Uber. Understanding its architecture is essential for system design interviews.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 space-y-4">
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             {[
               { term: 'Topic', def: 'A named category/feed of messages. Like a database table. Producers write to topics, consumers read from them. Example: "order-events", "user-signups".' },
               { term: 'Partition', def: 'Each topic is split into ordered, append-only partitions. This is how Kafka achieves parallelism — more partitions = more consumers can read concurrently.' },

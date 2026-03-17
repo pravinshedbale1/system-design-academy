@@ -220,7 +220,7 @@ export default function Chapter6({ onProgress }: ChapterProps) {
     onProgress(6);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <div>
         <div className="flex items-center gap-3 mb-3">
           <span className="text-4xl">🗃️</span>
@@ -240,7 +240,7 @@ export default function Chapter6({ onProgress }: ChapterProps) {
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           SQL databases follow ACID guarantees. NoSQL databases typically follow BASE semantics — a deliberate trade-off that enables massive horizontal scaling at the cost of strict consistency.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <div className="font-bold text-indigo-600 dark:text-indigo-400 text-center py-1 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">ACID (SQL)</div>
             {[
@@ -287,7 +287,7 @@ export default function Chapter6({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
           In leader-follower replication, all writes go to the leader. The leader asynchronously replicates changes to follower nodes. Followers serve read traffic, reducing load on the leader by 3–10x.
         </p>
-        <div className="grid grid-cols-3 gap-3 mb-4 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 text-sm">
           {[
             { label: 'Sync Replication', desc: 'Leader waits for at least one follower to confirm before acknowledging the write. No data loss, but higher write latency.' },
             { label: 'Async Replication', desc: 'Leader acknowledges immediately. Followers catch up eventually. Faster writes, but a crash during the lag can lose committed data.' },
@@ -314,7 +314,7 @@ export default function Chapter6({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
           Sharding horizontally partitions data across multiple database servers. Each server (shard) owns a subset of the data. Change the User ID to see how hash-based routing works.
         </p>
-        <div className="grid grid-cols-3 gap-3 mb-4 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 text-sm">
           {[
             { label: 'Hash Sharding', desc: 'shard = hash(key) % N. Even distribution but makes range queries impossible — you\'d have to query all shards.' },
             { label: 'Range Sharding', desc: 'Users 1–1M go to Shard 1, 1M–2M to Shard 2. Range queries are fast, but uneven distribution causes "hot shards."' },

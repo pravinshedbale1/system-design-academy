@@ -50,7 +50,7 @@ function CAPCards() {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {cards.map((card) => (
         <motion.div
           key={card.key}
@@ -163,7 +163,7 @@ export default function Chapter2({ onProgress }: ChapterProps) {
     onProgress(2);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <div>
         <div className="flex items-center gap-3 mb-3">
           <span className="text-4xl">🔺</span>
@@ -186,7 +186,7 @@ export default function Chapter2({ onProgress }: ChapterProps) {
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           The critical insight: <em>Partition Tolerance is not optional.</em> You cannot build a distributed system that never partitions — that would require a perfect network, which doesn't exist in the real world. So in practice, every distributed system must choose: <strong className="text-gray-800 dark:text-gray-200">when a partition happens, do you sacrifice Consistency or Availability?</strong>
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
             <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Choosing CP (like MongoDB)</div>
             <p className="text-sm text-gray-600 dark:text-gray-400">During a partition, the system goes <em>offline</em> on the minority side rather than serve stale data. Users in the partitioned region can't read or write. When the partition heals, data is guaranteed consistent.</p>
@@ -219,7 +219,7 @@ export default function Chapter2({ onProgress }: ChapterProps) {
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           "Eventually consistent" does NOT mean "sometimes correct." It means: <em>if no new updates are made, all replicas will eventually converge to the same value.</em> The key parameters are:
         </p>
-        <div className="grid grid-cols-3 gap-3 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
           {[
             { label: 'Convergence Time', desc: 'How long until all replicas agree. In well-designed AP systems this is typically milliseconds to seconds, not hours.' },
             { label: 'Conflict Resolution', desc: 'When two nodes update the same key during a partition, who wins? Options: Last-Write-Wins (LWW), vector clocks, CRDTs, or application-level merge.' },

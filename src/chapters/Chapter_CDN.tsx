@@ -50,7 +50,7 @@ export default function Chapter11_CDN({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 10</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🚀 Content Delivery Networks</h1>
@@ -75,7 +75,7 @@ export default function Chapter11_CDN({ onProgress }: ChapterProps) {
           <span className="w-7 h-7 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center">2</span>
           Push CDN vs Pull CDN
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">📤 Push CDN</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">You upload content to CDN proactively. Content is available at all edges before any user requests it.</p>
@@ -138,7 +138,7 @@ export default function Chapter11_CDN({ onProgress }: ChapterProps) {
         </h2>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 space-y-3">
           <p className="text-sm text-gray-600 dark:text-gray-400 italic">"There are only two hard things in CS: cache invalidation and naming things." — Phil Karlton</p>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
               { name: 'Versioned URLs', desc: 'app.v2.1.js or app.abc123.js — new filename = new cache entry. Old versions expire naturally.', icon: '🏷️' },
               { name: 'Purge API', desc: 'POST /purge?url=/image.jpg — CDN deletes cached copy. Takes seconds to propagate globally.', icon: '🗑️' },
@@ -163,7 +163,7 @@ export default function Chapter11_CDN({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Modern CDNs go beyond static file caching. They run <strong className="text-gray-800 dark:text-gray-200">compute at the edge</strong> — executing code in 300+ locations worldwide.
           </p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               { name: 'Cloudflare Workers', desc: 'JavaScript/WASM at 300+ PoPs. Cold start <5ms. No containers.' },
               { name: 'AWS Lambda@Edge', desc: 'Runs Lambda functions at CloudFront edge. Modifies requests/responses.' },

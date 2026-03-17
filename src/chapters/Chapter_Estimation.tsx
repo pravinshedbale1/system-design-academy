@@ -18,7 +18,7 @@ function EstimationCalc() {
         <input type="range" min={1} max={1000} value={dau} onChange={e => setDau(Number(e.target.value))} className="flex-1 accent-indigo-500" />
         <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400 w-16 text-right">{dau}M</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {[
           { label: 'Avg QPS', value: `${rps.toLocaleString()} req/s`, note: `${dau}M ÷ 86,400 sec` },
           { label: 'Peak QPS (3x)', value: `${peakRps.toLocaleString()} req/s`, note: 'Assume 3x peak factor' },
@@ -43,7 +43,7 @@ export default function Chapter21_Estimation({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 20</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🧮 Back-of-Envelope Estimation</h1>
@@ -56,7 +56,7 @@ export default function Chapter21_Estimation({ onProgress }: ChapterProps) {
           Powers of 2
         </h2>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-4">
-          <div className="grid grid-cols-4 gap-2 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
             {[
               { pow: '2¹⁰', val: '1 KB', bytes: '1,024' },
               { pow: '2²⁰', val: '1 MB', bytes: '1,048,576' },

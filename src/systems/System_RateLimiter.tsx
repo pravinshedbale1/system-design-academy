@@ -323,12 +323,12 @@ export default function S05_RateLimiter({ onProgress }: SystemPageProps) {
     onProgress(75);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Why Rate Limiting?"
         note="Without rate limiting: a single bad actor can exhaust your server resources, causing downtime for all users.">
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             { icon: '🐛', t: 'DDoS Prevention', d: 'Stop malicious floods of requests from overwhelming servers' },
             { icon: '💸', t: 'Cost Control', d: 'Prevent runaway API costs — each request costs compute' },

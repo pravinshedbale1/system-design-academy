@@ -152,13 +152,13 @@ export default function S01_Twitter({ onProgress }: SystemPageProps) {
     onProgress(71);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       {/* Estimation */}
       <Section step={1} title="Scale & Requirements"
         note="Clarify before designing: Twitter serves ~500M active users. The feed is read 100x more than it's written.">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TheoryBox title="Functional Requirements" icon="📋">
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>→ Post tweets (280 chars, images, video)</li>
@@ -226,7 +226,7 @@ export default function S01_Twitter({ onProgress }: SystemPageProps) {
 
       <Section step={5} title="Data Schema">
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-4">
-          <div className="grid grid-cols-2 gap-4 font-mono text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
             <div>
               <div className="text-indigo-600 dark:text-indigo-400 font-bold mb-2">tweets table (Cassandra)</div>
               <div className="space-y-0.5 text-gray-600 dark:text-gray-400">
