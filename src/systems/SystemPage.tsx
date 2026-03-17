@@ -9,21 +9,21 @@ export interface SystemPageProps {
 type LazySystem = ReturnType<typeof lazy<ComponentType<SystemPageProps>>>;
 
 const systemComponents: Record<number, LazySystem> = {
-  1: lazy(() => import('./Twitter')),
-  2: lazy(() => import('./YouTube')),
-  3: lazy(() => import('./WhatsApp')),
-  4: lazy(() => import('./Uber')),
-  5: lazy(() => import('./RateLimiter')),
-  6: lazy(() => import('./Notifications')),
-  7: lazy(() => import('./MessageQueue')),
-  8: lazy(() => import('./GoogleDrive')),
-  9: lazy(() => import('./WebCrawler')),
-  10: lazy(() => import('./Payments')),
-  11: lazy(() => import('./Instagram')),
-  12: lazy(() => import('./TinyURL')),
-  13: lazy(() => import('./Dropbox')),
-  14: lazy(() => import('./SearchEngine')),
-  15: lazy(() => import('./Discord')),
+  1: lazy(() => import('./System_Twitter')),
+  2: lazy(() => import('./System_YouTube')),
+  3: lazy(() => import('./System_WhatsApp')),
+  4: lazy(() => import('./System_Uber')),
+  5: lazy(() => import('./System_RateLimiter')),
+  6: lazy(() => import('./System_Notifications')),
+  7: lazy(() => import('./System_MessageQueue')),
+  8: lazy(() => import('./System_GoogleDrive')),
+  9: lazy(() => import('./System_WebCrawler')),
+  10: lazy(() => import('./System_Payments')),
+  11: lazy(() => import('./System_Instagram')),
+  12: lazy(() => import('./System_TinyURL')),
+  13: lazy(() => import('./System_Dropbox')),
+  14: lazy(() => import('./System_SearchEngine')),
+  15: lazy(() => import('./System_Discord')),
 };
 
 function Skeleton() {
