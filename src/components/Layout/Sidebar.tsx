@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { chapters } from '../../data/chapters';
 import { systems } from '../../data/systems';
 import type { ChapterStatus } from '../../hooks/useProgress';
-import { CheckCircle, Circle, BookOpen, Cpu, ChevronDown, ChevronRight, X } from 'lucide-react';
+import { CheckCircle, Circle, BookOpen, Cpu, ChevronDown, ChevronRight, X, BookA } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface SidebarProps {
@@ -58,11 +58,11 @@ export default function Sidebar({ progress, isOpen, onClose }: SidebarProps) {
       </AnimatePresence>
 
       <aside 
-        className={`fixed top-14 bottom-0 w-[280px] md:w-60 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto z-[50] transition-transform duration-300 left-0 md:translate-x-0 ${
+        className={`fixed flex flex-col top-14 bottom-0 w-[280px] md:w-60 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 z-[50] transition-transform duration-300 left-0 md:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="py-3 px-3 space-y-1">
+        <div className="flex-1 py-3 px-3 space-y-1 overflow-y-auto hide-scrollbar pb-6">
           {/* Mobile close button inside sidebar */}
           <div className="flex justify-end md:hidden mb-2">
             <button onClick={onClose} className="p-1.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -160,8 +160,24 @@ export default function Sidebar({ progress, isOpen, onClose }: SidebarProps) {
           </AnimatePresence>
         </div>
 
-      </div>
-    </aside>
+        </div>
+
+        {/* ── Glossary Section (Sticky Bottom) ── */}
+        <div className="p-3 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-800">
+          <NavLink
+            to="/glossary"
+            onClick={onClose}
+            className={({ isActive }) => `flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-sm ${
+              isActive
+                ? 'bg-indigo-500 text-white shadow-indigo-200 dark:shadow-indigo-900/20'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 hover:text-indigo-600 dark:hover:text-indigo-400'
+            }`}
+          >
+            <BookA size={16} className={location.pathname === '/glossary' ? 'text-white' : 'text-indigo-500'} />
+            Glossary
+          </NavLink>
+        </div>
+      </aside>
     </>
   );
 }

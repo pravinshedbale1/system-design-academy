@@ -28,6 +28,7 @@ import Chapter18 from './chapters/Chapter_Security';
 import Chapter19 from './chapters/Chapter_Monitoring';
 import Chapter20 from './chapters/Chapter_Estimation';
 import SystemPage from './systems/SystemPage';
+import Glossary from './pages/Glossary';
 
 type ChapterProps = { onProgress: (id: number) => void };
 
@@ -120,6 +121,7 @@ export default function App() {
                 />
               );
             })}
+            <Route path="/glossary" element={<Glossary />} />
             <Route path="*" element={<Navigate to="/chapter/1" replace />} />
           </Routes>
         </main>
