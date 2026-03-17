@@ -11,7 +11,7 @@ function QuorumCalc() {
   const consistent = w + r > n;
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {[
           { label: 'N (replicas)', val: n, set: setN, min: 1, max: 9 },
           { label: 'W (write quorum)', val: w, set: setW, min: 1, max: n },
@@ -60,7 +60,7 @@ function ReplicationLagDemo() {
       <button onClick={doWrite} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-all">
         ✏️ Write to Leader
       </button>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-xl p-4 border-2 border-blue-500 bg-blue-50 dark:bg-blue-900/20">
           <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">👑 Leader</div>
           <div className="font-mono text-lg text-gray-800 dark:text-gray-200">name = "{leaderVal}"</div>
@@ -86,7 +86,7 @@ export default function Chapter13_Replication({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 12</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🔄 Replication</h1>
@@ -116,7 +116,7 @@ export default function Chapter13_Replication({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           There are three fundamental approaches, each with different tradeoffs around consistency, availability, and complexity. Most production systems use leader-follower. Multi-leader is for multi-datacenter. Leaderless is for specific high-availability use cases.
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Leader-Follower', icon: '👑', desc: 'One node (leader) handles ALL writes. Followers replicate the leader\'s write log (WAL) and serve read queries. If the leader dies, a follower is promoted.', pros: 'Simple, strong consistency from leader, easy to reason about', cons: 'Leader is bottleneck/SPOF. Failover can lose data (async) or block writes (sync)', ex: 'PostgreSQL, MySQL, MongoDB replica sets, Redis Sentinel' },
             { name: 'Multi-Leader', icon: '👥', desc: 'Multiple nodes accept writes, often one per datacenter. They replicate to each other asynchronously. Write conflicts must be detected and resolved (LWW, CRDTs, or app logic).', pros: 'Write availability across DCs, tolerates datacenter failure', cons: 'Write conflicts are inevitable, complex conflict resolution logic', ex: 'CockroachDB, Cassandra, Google Docs (OT/CRDT)' },
@@ -142,7 +142,7 @@ export default function Chapter13_Replication({ onProgress }: ChapterProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400 ml-9">
           This choice is a fundamental tradeoff between <strong className="text-gray-800 dark:text-gray-200">data safety and write speed</strong>. Synchronous = safe but slow. Asynchronous = fast but risky. Most production systems use a hybrid approach.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-blue-600 dark:text-blue-400 mb-2">🔒 Synchronous</h3>
             <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1.5">
@@ -207,7 +207,7 @@ export default function Chapter13_Replication({ onProgress }: ChapterProps) {
           When two nodes accept conflicting writes (multi-leader or leaderless), you need a strategy to determine which write "wins." There is no universally correct answer — the right choice depends on your domain.
         </p>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               { name: 'Last Write Wins (LWW)', desc: 'Use wall-clock timestamp; latest write wins. Simple but dangerous — silently drops concurrent writes. Causes data loss if clocks are skewed. Acceptable for non-critical data (session data, caches).', color: '#f59e0b' },
               { name: 'Version Vectors', desc: 'Track causality with per-node counters. Detects true conflicts (concurrent writes) vs. sequential ones. Can surface conflicts to the application for resolution. Used by Riak.', color: '#8b5cf6' },

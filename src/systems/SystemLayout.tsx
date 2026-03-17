@@ -56,7 +56,7 @@ interface KeyValueProps {
 }
 export function KeyValueGrid({ items }: KeyValueProps) {
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       {items.map(it => (
         <div key={it.label} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
           <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">{it.label}</div>

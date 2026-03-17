@@ -42,7 +42,7 @@ export default function Chapter10_DNS({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 9</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🗺️ DNS Deep Dive</h1>
@@ -99,7 +99,7 @@ export default function Chapter10_DNS({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             <strong className="text-gray-800 dark:text-gray-200">TTL (Time To Live)</strong> controls how long a DNS response is cached. Setting it correctly is a critical operational decision:
           </p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-3 border border-amber-200 dark:border-amber-800">
               <div className="font-semibold text-amber-700 dark:text-amber-400 text-sm mb-1">High TTL (24h–72h)</div>
               <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-0.5">
@@ -134,7 +134,7 @@ export default function Chapter10_DNS({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             GeoDNS returns different IP addresses based on the client's geographic location. This routes users to the nearest data center for lower latency.
           </p>
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             {[
               { region: '🇺🇸 US East', ip: '34.102.136.104', dc: 'us-east-1' },
               { region: '🇪🇺 Europe', ip: '35.190.247.13', dc: 'eu-west-1' },

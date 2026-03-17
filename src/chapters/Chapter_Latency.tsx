@@ -79,7 +79,7 @@ function ThroughputCalculator() {
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { label: 'Number of Servers', value: servers, set: setServers, min: 1, max: 20 },
           { label: 'RPS per Server', value: rps, set: setRps, min: 50, max: 2000 },
@@ -100,7 +100,7 @@ function ThroughputCalculator() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-xl p-4 text-center">
           <div className="text-2xl font-bold font-mono text-indigo-600 dark:text-indigo-400">{totalRps.toLocaleString()}</div>
           <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Total RPS</div>
@@ -151,7 +151,7 @@ export default function Chapter3({ onProgress }: ChapterProps) {
     onProgress(3);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <div>
         <div className="flex items-center gap-3 mb-3">
           <span className="text-4xl">⚡</span>
@@ -168,7 +168,7 @@ export default function Chapter3({ onProgress }: ChapterProps) {
       {/* Core Theory */}
       <section className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 space-y-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">🧠 Latency vs Throughput — Not the Same Thing</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-4 border border-indigo-200 dark:border-indigo-800">
             <div className="font-bold text-indigo-700 dark:text-indigo-300 text-lg mb-1">Latency</div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Time for a single request to complete. Measured as: <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">time_response - time_request</code>. Usually expressed in ms. Represents the user experience.</p>
@@ -192,7 +192,7 @@ export default function Chapter3({ onProgress }: ChapterProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
             Average latency is almost meaningless in distributed systems. If 99% of requests take 10ms and 1% take 10 seconds, your average might be 110ms — hiding a severe problem. Always measure percentiles:
           </p>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             {[
               { p: 'P50', name: 'Median', desc: 'Half of requests are faster. Your "typical" user experience.' },
               { p: 'P90', name: '90th Percentile', desc: '10% of users see this or worse. Often the SLO target.' },
@@ -231,7 +231,7 @@ export default function Chapter3({ onProgress }: ChapterProps) {
             L = concurrent requests in system &nbsp;|&nbsp; λ = arrival rate (RPS) &nbsp;|&nbsp; W = latency per request
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-4">
             <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-1">Practical example</div>
             <p className="text-gray-600 dark:text-gray-400">If your service handles 1,000 RPS and each request takes 50ms, you have L = 1000 × 0.05 = <strong>50 concurrent requests</strong> in flight at any moment. Size your thread pools accordingly.</p>

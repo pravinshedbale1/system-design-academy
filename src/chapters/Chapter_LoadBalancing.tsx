@@ -146,7 +146,7 @@ function RequestAnimation({ algorithm }: { algorithm: string }) {
 
 function L4vsL7() {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
         <div className="text-indigo-600 dark:text-indigo-400 font-bold text-lg mb-1">L4 — Transport Layer</div>
         <div className="text-xs text-gray-500 dark:text-gray-400 mb-3">Routes based on IP + TCP/UDP port</div>
@@ -209,7 +209,7 @@ export default function Chapter5({ onProgress }: ChapterProps) {
     onProgress(5);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <div>
         <div className="flex items-center gap-3 mb-3">
           <span className="text-4xl">⚖️</span>
@@ -229,7 +229,7 @@ export default function Chapter5({ onProgress }: ChapterProps) {
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           Without a load balancer, you have a single server — a Single Point of Failure (SPOF). With a load balancer, you can run N servers and the LB distributes traffic, monitors health, and automatically removes failed servers from rotation.
         </p>
-        <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           {[
             { step: '1', title: 'Request arrives', desc: 'Client sends request to your domain. DNS resolves to the load balancer\'s IP, not your server\'s IP.' },
             { step: '2', title: 'LB selects a server', desc: 'Based on the chosen algorithm (Round Robin, Least Connections, etc.) the LB forwards the request to a healthy backend server.' },
@@ -245,7 +245,7 @@ export default function Chapter5({ onProgress }: ChapterProps) {
 
         <div className="border-t border-gray-100 dark:border-gray-700 pt-4">
           <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">Health Checks — How the LB Knows a Server is Dead</h3>
-          <div className="grid grid-cols-3 gap-3 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
             {[
               { type: 'TCP Health Check', desc: 'Simply checks that the port is open. Fast, but doesn\'t verify the app is actually working. Good for basic availability.' },
               { type: 'HTTP Health Check', desc: 'Makes an HTTP request to /health and checks for a 200 response. The /health endpoint should verify DB connectivity, memory pressure, etc.' },

@@ -9,11 +9,11 @@ export default function S11_Instagram({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(81); }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="Instagram serves 2B+ monthly active users with 100M+ photos uploaded per day.">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TheoryBox title="Functional Requirements" icon="📋">
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>→ Upload photos/videos with captions</li>
@@ -38,7 +38,7 @@ export default function S11_Instagram({ onProgress }: SystemPageProps) {
 
       <Section step={2} title="High-Level Architecture">
         <TheoryBox title="Core Services" icon="🏗️">
-          <div className="grid grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-400">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-400">
             {[
               { name: 'Upload Service', desc: 'Receives media, generates thumbnails (multiple resolutions), stores in S3. Returns CDN URL.' },
               { name: 'Feed Service', desc: 'Pre-computed feed stored in Redis/Memcached. Updated on new posts via fan-out (same as Twitter design).' },
@@ -74,7 +74,7 @@ export default function S11_Instagram({ onProgress }: SystemPageProps) {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
             Same hybrid approach as Twitter: fan-out-on-write for regular users, fan-out-on-read for celebrities.
           </p>
-          <div className="grid grid-cols-2 gap-3 text-xs text-gray-600 dark:text-gray-400">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-600 dark:text-gray-400">
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 border border-blue-200 dark:border-blue-800">
               <div className="font-semibold text-blue-700 dark:text-blue-400">Regular user posts</div>
               <p className="mt-0.5">Push to all followers' feed caches (Redis ZADD). Fast reads, more writes.</p>

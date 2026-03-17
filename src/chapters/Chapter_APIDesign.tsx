@@ -59,7 +59,7 @@ service UserService {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="bg-gray-900 dark:bg-gray-950 rounded-xl p-4">
           <div className="text-xs font-mono text-gray-400 mb-1">Request</div>
           <pre className="text-xs font-mono text-emerald-400 whitespace-pre-wrap">{examples[api].request}</pre>
@@ -78,7 +78,7 @@ export default function Chapter9_APIDesign({ onProgress }: ChapterProps) {
   const fadeUp = { initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <motion.div {...fadeUp}>
         <div className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-1">Chapter 8</div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">🔌 API Design</h1>
@@ -119,7 +119,7 @@ export default function Chapter9_APIDesign({ onProgress }: ChapterProps) {
           <span className="w-7 h-7 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center">2</span>
           Pagination Strategies
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5">
             <h3 className="font-bold text-amber-600 dark:text-amber-400 mb-2">📄 Offset Pagination</h3>
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 font-mono text-xs text-gray-600 dark:text-gray-400 mb-2">
@@ -205,7 +205,7 @@ export default function Chapter9_APIDesign({ onProgress }: ChapterProps) {
           <span className="w-7 h-7 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center">5</span>
           API Versioning Strategies
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             { name: 'URL Path', ex: '/api/v2/users', pros: 'Clear, cached by CDN', cons: 'Pollutes URL namespace', used: 'Stripe, Twitter' },
             { name: 'Query Param', ex: '/api/users?v=2', pros: 'Keeps URL clean', cons: 'Easy to forget, caching issues', used: 'Google Maps' },

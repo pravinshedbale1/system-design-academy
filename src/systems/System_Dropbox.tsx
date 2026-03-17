@@ -9,12 +9,12 @@ export default function S13_Dropbox({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(83); }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Core Architecture" note="Dropbox syncs 1.2B+ files per day across 700M users.">
         <TheoryBox title="System Components" icon="🏗️">
-          <div className="grid grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-400">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-400">
             {[
               { name: 'Block Server', desc: 'Splits files into 4MB chunks. Computes SHA256 hash per block. Only uploads changed blocks (delta sync).' },
               { name: 'Metadata Service', desc: 'Stores file tree: path, version, block list, permissions. PostgreSQL with strong consistency.' },

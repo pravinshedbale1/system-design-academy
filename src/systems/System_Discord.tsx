@@ -9,11 +9,11 @@ export default function S15_Discord({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(85); }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="Discord handles 150M+ MAU, 4B+ messages/day, millions of concurrent voice users.">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TheoryBox title="Functional Requirements" icon="📋">
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>→ Real-time text messaging in channels</li>
@@ -63,7 +63,7 @@ export default function S15_Discord({ onProgress }: SystemPageProps) {
       </Section>
 
       <Section step={4} title="Presence & Voice">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <TheoryBox title="Presence System" icon="🟢">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Heartbeat every 30s via WebSocket. If no heartbeat for 60s → mark offline. Store in Redis with TTL=60s. On status change, publish to all servers where the user's friends are connected. For large servers (1M+ members), only track presence for visible members in the user's channel list.

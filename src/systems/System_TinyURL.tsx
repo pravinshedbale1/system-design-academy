@@ -22,7 +22,7 @@ function Base62Demo() {
         <input type="range" min={1} max={99999999} value={counter} onChange={e => setCounter(Number(e.target.value))} className="flex-1 accent-indigo-500" />
         <span className="font-mono text-indigo-600 dark:text-indigo-400 text-sm w-24 text-right">{counter}</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3">
           <div className="text-xs text-gray-500">Short URL</div>
           <div className="font-mono font-bold text-indigo-600 dark:text-indigo-400">tiny.url/<span className="text-emerald-600">{toBase62(counter)}</span></div>
@@ -40,11 +40,11 @@ export default function S12_TinyURL({ onProgress }: SystemPageProps) {
   useEffect(() => { onProgress(82); }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Requirements & Scale" note="500M new URLs/month, 50B redirects/month (100:1 read/write ratio).">
-        <div className="grid grid-cols-3 gap-3 text-xs">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           {[
             { label: 'Write QPS', val: '~200/s', note: '500M / 30 days / 86400' },
             { label: 'Read QPS', val: '~20K/s', note: '100:1 read-to-write' },

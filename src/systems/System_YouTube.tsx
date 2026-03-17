@@ -79,7 +79,7 @@ function StreamingDiagram() {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-3 gap-3 text-sm">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
         <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-3">
           <div className="text-xs text-gray-500 mb-1">Bitrate</div>
           <div className="font-mono font-bold text-indigo-600 dark:text-indigo-400">{br} Mbps</div>
@@ -105,7 +105,7 @@ export default function S02_YouTube({ onProgress }: SystemPageProps) {
     onProgress(72);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">

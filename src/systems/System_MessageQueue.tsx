@@ -29,7 +29,7 @@ function KafkaTopicVisual() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {[0, 1, 2].map(p => (
           <div key={p}>
             <div className="text-center text-xs font-semibold mb-2" style={{ color: partitionColors[p] }}>
@@ -81,7 +81,7 @@ export default function S07_MessageQueue({ onProgress }: SystemPageProps) {
     onProgress(77);  }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-14">
       <SystemHeader sys={sys} />
 
       <Section step={1} title="Scale Estimation">
