@@ -177,12 +177,14 @@ export default function S01_Twitter({ onProgress }: SystemPageProps) {
             </ul>
           </TheoryBox>
         </div>
+        <div className="mt-4">
         <KeyValueGrid items={[
           { label: 'Daily Active Users', value: '300M' },
           { label: 'Tweets/day', value: '500M (5,800 QPS)' },
           { label: 'Read:Write ratio', value: '100:1' },
           { label: 'Timeline reads/day', value: '28B (~325K QPS)', color: 'text-red-500' },
         ]} />
+        </div>
       </Section>
 
       <Section step={2} title="The Core Problem: Fan-out"
